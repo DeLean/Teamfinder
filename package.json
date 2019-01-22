@@ -1,0 +1,47 @@
+{
+  "name": "webapp",
+  "version": "1.0.0",
+  "description": "Teamfinder",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "mocha",
+    "lint": "eslint --fix ./"
+  },
+  "keywords": [
+    "testing",
+    "test"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "http://fbe-swenp3.hs-weingarten.de:8080/tfs/Team21/_git/WebApp"
+  },
+  "author": "Florian Pfeffer && Dennis Erdelean",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "chai-string": "^1.5.0",
+    "concurrently": "^4.1.0",
+    "express": "^4.16.4",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.3.7",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^10.11.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-json": "^1.0.0",
+    "eslint": "^5.6.0",
+    "jest": "^23.6.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.9",
+    "supertest": "^3.3.0"
+  }
+}
