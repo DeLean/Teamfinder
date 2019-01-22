@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import PostForm from "./Form";
-import PostFeed from "./Feed";
+import Form from "./Form";
+import Feed from "./Feed";
 import Spinner from "../static/Spinner";
 import { getPosts } from "../../actions/posts";
 
@@ -18,7 +18,7 @@ class Posts extends Component {
     if (posts === null || loading) {
       postContent = <Spinner />;
     } else {
-      postContent = <PostFeed posts={posts} />;
+      postContent = <Feed posts={posts} />;
     }
 
     return (
@@ -26,7 +26,7 @@ class Posts extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <PostForm />
+              <Form />
               {postContent}
             </div>
           </div>

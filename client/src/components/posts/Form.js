@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import TextAreaFieldGroup from "../static/TextAreaFieldGroup";
 import { addPost } from "../../actions/posts";
 
-class PostForm extends Component {
+class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -47,12 +47,12 @@ class PostForm extends Component {
     return (
       <div className="post-form mb-3">
         <div className="card card-info">
-          <div className="card-header bg-info text-white">Sag etwas</div>
+          <div className="card-header bg-success text-white">Sag etwas</div>
           <div className="card-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
                 <TextAreaFieldGroup
-                  placeholder="Create a post"
+                  placeholder="Hier dein Post..."
                   name="text"
                   value={this.state.text}
                   onChange={this.onChange}
@@ -70,7 +70,7 @@ class PostForm extends Component {
   }
 }
 
-PostForm.propTypes = {
+Form.propTypes = {
   addPost: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
@@ -81,4 +81,4 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { addPost })(PostForm);
+export default connect(mapStateToProps, { addPost })(Form);

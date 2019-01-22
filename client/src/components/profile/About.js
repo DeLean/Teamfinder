@@ -18,17 +18,17 @@ class About extends Component {
     return (
       <div className="row">
         <div className="col-md-12">
-          <div className="card card-body bg-light mb-3">
-            <h3 className="text-center text-info">{firstName} Ist Bio</h3>
+          <div className="card border-dark card-body bg-light mb-3">
+            <h3 className="text-center text-success">{firstName} über sich</h3>
             <p className="lead">
               {isEmpty(profile.bio) ? (
-                <span>{firstName} Hat kein Bio</span>
+                <span>{firstName} hat noch nichts über sich geschrieben</span>
               ) : (
                   <span>{profile.bio}</span>
                 )}
             </p>
             <hr />
-            <h3 className="text-center text-info">Skills</h3>
+            <h3 className="text-center text-success">Skills</h3>
             <div className="row">
               <div className="d-flex flex-wrap justify-content-center align-items-center">
                 {skills}

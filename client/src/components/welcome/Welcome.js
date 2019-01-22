@@ -31,7 +31,7 @@ class Welcome extends Component {
         dashboardContent = (
           <div>
             <p className="lead text-muted">
-              Willkomen <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+              Hey <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
             </p>
             <ProfileActions />
             <Experience experience={profile.experience} />
@@ -49,7 +49,7 @@ class Welcome extends Component {
         // User is logged in but has no profile
         dashboardContent = (
           <div>
-            <p className="lead text-muted">Willkommen {user.name}</p>
+            <p className="lead text-muted">Hey {user.name}</p>
             <p>Dein Profil ist noch leer, fülle es doch aus</p>
             <Link to="/create_profile" className="btn btn-lg btn-info">
               Profil erstellen

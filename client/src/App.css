@@ -9,8 +9,15 @@ footer{
   .navbar{
     background-color: black !important;
     border-bottom: 2px solid white;
+  }
    
+  .bg-info{
+    background-color: green;
+    color: green;
   
+}
+  i{
+    margin: 10px 10px 10px 10px;
   }
   .lead1{
     color: green;
@@ -25,6 +32,29 @@ footer{
     color: green;
     font-family: consolas;
   }
+
+  .lead4{
+    color: green;
+    font-family: consolas;
+  }
+  
+  .lead5{
+    color: green;
+    font-family: consolas;
+
+  }
+  .lead6{
+    color: green;
+    font-family: consolas !important;
+
+  }
+
+  .lead7{
+    color: green;
+    font-family: consolas !important;
+
+  }
+
   
   .nav-link{
     color: white !important;
@@ -35,7 +65,7 @@ footer{
     width: 100%;
   }
   
-  .welcome {
+  .homepage {
     position: relative;
     background: url("./img/Team-large.jpg") no-repeat;
     background-size: cover;

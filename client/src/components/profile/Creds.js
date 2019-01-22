@@ -65,7 +65,7 @@ class Creds extends Component {
     return (
       <div className="row">
         <div className="col-md-6">
-          <h3 className="text-center text-info">Erfahrung</h3>
+          <h3 className="text-center text-success">Erfahrung</h3>
           {expItems.length > 0 ? (
             <ul className="list-group">{expItems}</ul>
           ) : (
@@ -74,7 +74,7 @@ class Creds extends Component {
         </div>
 
         <div className="col-md-6">
-          <h3 className="text-center text-info">Bildung</h3>
+          <h3 className="text-center text-success">Bildung</h3>
           {eduItems.length > 0 ? (
             <ul className="list-group">{eduItems}</ul>
           ) : (

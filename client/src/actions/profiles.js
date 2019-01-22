@@ -29,10 +29,10 @@ export const getCurrentProfile = () => dispatch => {
 };
 
 // Get profile by handle
-export const getProfileByHandle = handle => dispatch => {
+export const getProfileByURL = url => dispatch => {
   dispatch(setProfileLoading());
   axios
-    .get(`/api/profile/handle/${handle}`)
+    .get(`/api/profile/profileURL/${url}`)
     .then(res =>
       dispatch({
         type: GET_PROFILE,
@@ -143,7 +143,7 @@ export const getProfiles = () => dispatch => {
 
 // Delete account & profile
 export const deleteAccount = () => dispatch => {
-  if (window.confirm('Sind Sie sich sicher? Dieser Vorgang kann nicht rückgängig gemacht werden!')) {
+  if (window.confirm("Sind Sie sich sicher? Dieser Vorgang kann nicht rückgängig gemacht werden!")) {
     axios
       .delete("/api/profile")
       .then(res =>

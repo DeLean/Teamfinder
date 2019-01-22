@@ -37,7 +37,7 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     };
-
+    console.log(userData);
     this.props.loginUser(userData);
   }
 
@@ -54,7 +54,7 @@ class Login extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Anmelden</h1>
-              <p className="lead text-center">
+              <p className="lead3 text-center">
                 Melde dich hier zu deinem Teamfinder Account an
               </p>
               <form onSubmit={this.onSubmit}>

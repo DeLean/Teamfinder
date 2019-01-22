@@ -55,7 +55,7 @@ class Register extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Registrieren</h1>
-              <p className="lead1 text-center">
+              <p className="lead3 text-center">
                 Erstelle hier deinen Teamfinder Account
               </p>
               <form noValidate onSubmit={this.onSubmit}>

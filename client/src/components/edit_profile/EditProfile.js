@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import TextFieldGroup from "../static/TextFieldGroup";
 import TextAreaFieldGroup from "../static/TextAreaFieldGroup";
-import InputGroup from "../static/InputGroup";
 import SelectListGroup from "../static/SelectListGroup";
 import { createProfile, getCurrentProfile } from "../../actions/profiles";
 import isEmpty from "../../validation/is_empty";
@@ -126,10 +125,10 @@ class CreateProfile extends Component {
           <div className="row">
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Erstelle dein Profil</h1>
-              <p className="lead text-center">
+              <p className="lead5 text-center">
               Fülle hier dein Profil aus um so attraktiv wie möglich für andere zu werden
               </p>
-              <small className="d-block pb-3">* = required fields</small>
+              <small className="d-block pb-3">*erforderliche Felder</small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="* Profil URL"
@@ -201,7 +200,7 @@ class CreateProfile extends Component {
                 
                 <input
                   type="submit"
-                  value="Submit"
+                  value="Senden"
                   className="btn btn-info btn-block mt-4"
                 />
               </form>

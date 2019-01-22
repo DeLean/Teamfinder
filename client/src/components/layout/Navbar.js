@@ -19,12 +19,12 @@ class Navbar extends Component {
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <Link className="nav-link" to="/feed">
-            Post Feed
+            Feed
           </Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/welcome">
-            Dashboard
+            Home
           </Link>
         </li>
         <li className="nav-item">
@@ -40,7 +40,7 @@ class Navbar extends Component {
               style={{ width: "25px", marginRight: "5px" }}
               title="Du brauchst ein Gravatar Account um ein Foto anzuzeigen"
             />{" "}
-            Logout
+            Abmelden
           </a>
         </li>
       </ul>
@@ -81,7 +81,7 @@ class Navbar extends Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/profiles">
                   {" "}
-                  Nutzer
+                  Profile
                 </Link>
               </li>
             </ul>

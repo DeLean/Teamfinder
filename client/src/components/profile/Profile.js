@@ -7,12 +7,12 @@ import About from "./About";
 import Creds from "./Creds";
 import Github from "./Github";
 import Spinner from "../static/Spinner";
-import { getProfileByHandle } from "../../actions/profiles";
+import { getProfileByURL } from "../../actions/profiles";
 
 class Profile extends Component {
   componentDidMount() {
-    if (this.props.match.params.handle) {
-      this.props.getProfileByHandle(this.props.match.params.handle);
+    if (this.props.match.params.url) {
+      this.props.getProfileByURL(this.props.match.params.url);
     }
   }
 
@@ -65,7 +65,7 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-  getProfileByHandle: PropTypes.func.isRequired,
+  getProfileByURL: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 };
 
@@ -73,4 +73,4 @@ const mapStateToProps = state => ({
   profile: state.profile
 });
 
-export default connect(mapStateToProps, { getProfileByHandle })(Profile);
+export default connect(mapStateToProps, { getProfileByURL })(Profile);

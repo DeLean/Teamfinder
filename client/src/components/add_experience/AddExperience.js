@@ -4,15 +4,15 @@ import TextFieldGroup from "../static/TextFieldGroup";
 import TextAreaFieldGroup from "../static/TextAreaFieldGroup";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addEducation } from "../../actions/profiles";
+import { addExperience } from "../../actions/profiles";
 
-class AddEducation extends Component {
+class AddExperience extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      institution: "",
-      degree: "",
-      fieldofstudy: "",
+      company: "",
+      title: "",
+      location: "",
       from: "",
       to: "",
       current: false,
@@ -35,17 +35,17 @@ class AddEducation extends Component {
   onSubmit(e) {
     e.preventDefault();
 
-    const eduData = {
-      institution: this.state.school,
-      degree: this.state.degree,
-      fieldofstudy: this.state.fieldofstudy,
+    const expData = {
+      company: this.state.company,
+      title: this.state.title,
+      location: this.state.location,
       from: this.state.from,
       to: this.state.to,
       current: this.state.current,
       description: this.state.description
     };
 
-    this.props.addEducation(eduData, this.props.history);
+    this.props.addExperience(expData, this.props.history);
   }
 
   onChange(e) {
@@ -63,49 +63,49 @@ class AddEducation extends Component {
     const { errors } = this.state;
 
     return (
-      <div className="add-education">
+      <div className="add_experience">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
               <Link to="/welcome" className="btn btn-light">
-                Go Back
+                Zurück
               </Link>
-              <h1 className="display-4 text-center">Bildung hinzufügen</h1>
-              <p className="lead text-center">
-                Fügen Sie jede erdenkliche Bildung hinzu die Sie möchten
+              <h1 className="display-4 text-center">Füge deine Erfahrung hinzu</h1>
+              <p className="lead6 text-center">
+                Füge dein Vergangene oder aktuellen Job/Position hinzu
               </p>
-              <small className="d-block pb-3">* = required fields</small>
+              <small className="d-block pb-3">*  erforderliche Felder</small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                  placeholder="* Bildungseinrichtung"
-                  name="school"
-                  value={this.state.institution}
+                  placeholder="* Unternehmen"
+                  name="company"
+                  value={this.state.company}
                   onChange={this.onChange}
-                  error={errors.school}
+                  error={errors.company}
                 />
                 <TextFieldGroup
-                  placeholder="* Abschluss oder Zertifikat"
-                  name="degree"
-                  value={this.state.degree}
+                  placeholder="* Jobtitel"
+                  name="title"
+                  value={this.state.title}
                   onChange={this.onChange}
-                  error={errors.degree}
+                  error={errors.title}
                 />
                 <TextFieldGroup
-                  placeholder="* Fachbereich"
-                  name="fieldofstudy"
-                  value={this.state.fieldofstudy}
+                  placeholder="Ort"
+                  name="location"
+                  value={this.state.location}
                   onChange={this.onChange}
-                  error={errors.fieldofstudy}
+                  error={errors.location}
                 />
-                <h6>Von</h6>
+                <h6>Von (Datum)</h6>
                 <TextFieldGroup
-                  name="from"
+                  name="frok"
                   type="string"
                   value={this.state.from}
                   onChange={this.onChange}
                   error={errors.from}
                 />
-                <h6>Bis</h6>
+                <h6>Bis (Datum)</h6>
                 <TextFieldGroup
                   name="to"
                   type="string"
@@ -129,12 +129,12 @@ class AddEducation extends Component {
                   </label>
                 </div>
                 <TextAreaFieldGroup
-                  placeholder="Beschreibung"
+                  placeholder="Job Beschreibung"
                   name="description"
                   value={this.state.description}
                   onChange={this.onChange}
                   error={errors.description}
-                  info="Erzählen über den Kurs oder das Programm an dem Sie teilnehmen"
+                  info="Sag was über deine Stelle"
                 />
                 <input
                   type="submit"
@@ -150,8 +150,8 @@ class AddEducation extends Component {
   }
 }
 
-AddEducation.propTypes = {
-  addEducation: PropTypes.func.isRequired,
+AddExperience.propTypes = {
+  addExperience: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -161,6 +161,6 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { addEducation })(
-  withRouter(AddEducation)
+export default connect(mapStateToProps, { addExperience })(
+  withRouter(AddExperience)
 );
