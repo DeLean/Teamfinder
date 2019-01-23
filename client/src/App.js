@@ -19,31 +19,23 @@ import Login from "./components/authentification/Login";
 import Welcome from "./components/welcome/Welcome";
 import CreateProfile from "./components/create_profile/CreateProfile";
 import EditProfile from "./components/edit_profile/EditProfile";
-import AddExperience from "./components/credentials/AddExperience";
-import AddEducation from "./components/credentials/AddEducation";
+import AddExperience from "./components/add_experience/AddExperience";
+import AddEducation from "./components/add_education/AddEducation";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import Posts from "./components/posts/Posts";
 import Post from "./components/comment/Post";
 import NotFound from "./components/not_found/NotFound";
 
-// Check for token
 if (localStorage.jwtToken) {
-  // Set auth token header auth
   setAuthToken(localStorage.jwtToken);
-  // Decode token and get user info and exp
   const decoded = jwt_decode(localStorage.jwtToken);
-  // Set user and isAuthenticated
   store.dispatch(setCurrentUser(decoded));
 
-  // Check for expired token
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
-    // Logout user
     store.dispatch(logoutUser());
-    // Clear current Profile
     store.dispatch(clearCurrentProfile());
-    // Redirect to login
     window.location.href = "/login";
   }
 }

@@ -122,7 +122,7 @@ router.post("/", passport.authenticate("jwt", { session: false }), (req, res) =>
 				//Nutzer hat kein Profil dann URL(handle prüfen)
 				Profile.findOne({ profileURL: profileFields.profileURL }).then(profile => {
 					if (profile) {
-						errors.profileURL = "That handle already exists";
+						errors.profileURL = "Profil URL existiert schon";
 						res.status(400).json(errors);
 					}
 					//URL ok, Profil erstellen
@@ -135,14 +135,12 @@ router.post("/", passport.authenticate("jwt", { session: false }), (req, res) =>
 //@desc   Erfahrung hinzufügen
 //@access Privat
 router.post(
-	'/experience',
-	passport.authenticate('jwt', { session: false }),
+	"/experience",
+	passport.authenticate("jwt", { session: false }),
 	(req, res) => {
 		const { errors, isValid } = validateExperienceInput(req.body);
 
-		// Check Validation
 		if (!isValid) {
-			// Return any errors with 400 status
 			return res.status(400).json(errors);
 		}
 
@@ -175,8 +173,8 @@ router.post(
 //@desc   Erfahrung löschen
 //@access Privat
 router.delete(
-	'/experience/:exp_id',
-	passport.authenticate('jwt', { session: false }),
+	"/experience/:exp_id",
+	passport.authenticate("jwt", { session: false }),
 	(req, res) => {
 		Profile.findOne({ user: req.user.id })
 			.then(profile => {
@@ -186,8 +184,6 @@ router.delete(
 					.indexOf(req.params.exp_id);
 
 				profile.experience.splice(removeIndex, 1);
-
-				// Save
 				profile.save().then(profile => res.json(profile));
 			});
 	}
@@ -196,8 +192,8 @@ router.delete(
 // @desc    Bildung hinzufügen
 // @access  Privat
 router.post(
-	'/education',
-	passport.authenticate('jwt', { session: false }),
+	"/education",
+	passport.authenticate("jwt", { session: false }),
 	(req, res) => {
 		const { errors, isValid } = validateEducationInput(req.body);
 		if (!isValid) {
@@ -230,11 +226,11 @@ router.post(
 	}
 );
 // @route   DELETE api/profile
-// @desc    Delete user and profile
+// @desc    Nutzer und sein Profil löschen
 // @access  Private
 router.delete(
-	'/',
-	passport.authenticate('jwt', { session: false }),
+	"/",
+	passport.authenticate("jwt", { session: false }),
 	(req, res) => {
 		Profile.findOneAndRemove({ user: req.user.id }).then(() => {
 			User.findOneAndRemove({ _id: req.user.id }).then(() =>

@@ -12,8 +12,8 @@ class Homepage extends Component {
 
   render() {
     return (
-      <div className="welcome">
-        <div className="dark-overlay landing-inner text-light">
+      <div className="homepage">
+        <div className="dark-overlay homepage-inner text-light">
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">

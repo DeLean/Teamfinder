@@ -36,7 +36,7 @@ class AddEducation extends Component {
     e.preventDefault();
 
     const eduData = {
-      institution: this.state.school,
+      institution: this.state.institution,
       degree: this.state.degree,
       fieldofstudy: this.state.fieldofstudy,
       from: this.state.from,
@@ -72,16 +72,16 @@ class AddEducation extends Component {
               </Link>
               <h1 className="display-4 text-center">Bildung hinzufügen</h1>
               <p className="lead7 text-center">
-                Fügen Sie jede erdenkliche Bildung hinzu die Sie möchten
+                Füge jede erdenkliche Bildung hinzu die du möchtest
               </p>
               <small className="d-block pb-3">*erforderliche Felder</small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="* Bildungseinrichtung"
-                  name="school"
+                  name="institution"
                   value={this.state.institution}
                   onChange={this.onChange}
-                  error={errors.school}
+                  error={errors.institution}
                 />
                 <TextFieldGroup
                   placeholder="* Abschluss oder Zertifikat"
@@ -104,6 +104,8 @@ class AddEducation extends Component {
                   value={this.state.from}
                   onChange={this.onChange}
                   error={errors.from}
+                  disabled={this.state.disabled ? "disabled" : ""}
+
                 />
                 <h6>Bis</h6>
                 <TextFieldGroup
@@ -125,7 +127,7 @@ class AddEducation extends Component {
                     id="current"
                   />
                   <label htmlFor="current" className="form-check-label">
-                    Aktueller Job
+                    Aktuelle Einrichtung
                   </label>
                 </div>
                 <TextAreaFieldGroup

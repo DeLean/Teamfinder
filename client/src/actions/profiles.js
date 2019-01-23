@@ -9,7 +9,7 @@ import {
   SET_CURRENT_USER
 } from "./types";
 
-// Get current profile
+// Aktuelles Profil holen
 export const getCurrentProfile = () => dispatch => {
   dispatch(setProfileLoading());
   axios
@@ -28,7 +28,7 @@ export const getCurrentProfile = () => dispatch => {
     );
 };
 
-// Get profile by handle
+// Profil per URL holen
 export const getProfileByURL = url => dispatch => {
   dispatch(setProfileLoading());
   axios
@@ -47,7 +47,7 @@ export const getProfileByURL = url => dispatch => {
     );
 };
 
-// Create Profile
+// Profil erstellen 
 export const createProfile = (profileData, history) => dispatch => {
   axios
     .post("/api/profile", profileData)
@@ -60,7 +60,7 @@ export const createProfile = (profileData, history) => dispatch => {
     );
 };
 
-// Add experience
+// Erfahrung hinzufügen
 export const addExperience = (expData, history) => dispatch => {
   axios
     .post("/api/profile/experience", expData)
@@ -73,7 +73,7 @@ export const addExperience = (expData, history) => dispatch => {
     );
 };
 
-// Add education
+// Bildung hinzufügen
 export const addEducation = (eduData, history) => dispatch => {
   axios
     .post("/api/profile/education", eduData)
@@ -86,7 +86,7 @@ export const addEducation = (eduData, history) => dispatch => {
     );
 };
 
-// Delete Experience
+// Erfahrung löschen
 export const deleteExperience = id => dispatch => {
   axios
     .delete(`/api/profile/experience/${id}`)
@@ -104,7 +104,7 @@ export const deleteExperience = id => dispatch => {
     );
 };
 
-// Delete Education
+// Bildung löschen
 export const deleteEducation = id => dispatch => {
   axios
     .delete(`/api/profile/education/${id}`)
@@ -122,7 +122,7 @@ export const deleteEducation = id => dispatch => {
     );
 };
 
-// Get all profiles
+// Alle Profile anzeigen
 export const getProfiles = () => dispatch => {
   dispatch(setProfileLoading());
   axios
@@ -141,7 +141,7 @@ export const getProfiles = () => dispatch => {
     );
 };
 
-// Delete account & profile
+// Nutzer und Profil löschen
 export const deleteAccount = () => dispatch => {
   if (window.confirm("Sind Sie sich sicher? Dieser Vorgang kann nicht rückgängig gemacht werden!")) {
     axios
@@ -161,14 +161,13 @@ export const deleteAccount = () => dispatch => {
   }
 };
 
-// Profile loading
+
 export const setProfileLoading = () => {
   return {
     type: PROFILE_LOADING
   };
 };
 
-// Clear profile
 export const clearCurrentProfile = () => {
   return {
     type: CLEAR_CURRENT_PROFILE

@@ -8,7 +8,9 @@ module.exports = function validateEducationInput(data) {
     data.institution = !isEmpty(data.institution) ? data.institution : "";
     data.degree = !isEmpty(data.degree) ? data.degree : "";
     data.fieldofstudy = !isEmpty(data.fieldofstudy) ? data.fieldofstudy : "";
-    data.from = !isEmpty(data.from) ? data.from : "";
+    //data.from = !isEmpty(data.from) ? data.from : "";
+    //data.to = !isEmpty(data.to) ? data.to : "";
+
 
 
     if (Validator.isEmpty(data.institution)) {
@@ -20,13 +22,13 @@ module.exports = function validateEducationInput(data) {
     if (Validator.isEmpty(data.fieldofstudy)) {
         errors.fieldofstudy = "Feld leer, bitte Fachrichtung eingeben";
     }
-    if (Validator.isEmpty(data.from)) {
-        errors.from = "Feld leer, geben sie den Beginn an";
-    }
+    //if (Validator.isEmpty(data.from)) {
+    //errors.from = "Feld leer, geben sie den Beginn an";
+    // }
 
-    if (Validator.isEmpty(data.to)) {
-        errors.from = "Feld leer, geben sie das Ende an";
-    }
+    //if (Validator.isEmpty(data.to)) {
+    // errors.to = "Feld leer, geben sie das Ende an";
+    //}
 
 
 

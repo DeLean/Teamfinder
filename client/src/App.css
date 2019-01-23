@@ -1,4 +1,3 @@
-
 footer{
     background-color: black !important;
     font-size: 8pt;
@@ -6,57 +5,55 @@ footer{
     border-top: 2px solid white;
   }
   
-  .navbar{
+.navbar{
     background-color: black !important;
     border-bottom: 2px solid white;
   }
    
-  .bg-info{
+.bg-info{
     background-color: green;
     color: green;
   
 }
-  i{
-    margin: 10px 10px 10px 10px;
-  }
-  .lead1{
+
+.lead1{
     color: green;
     font-family: consolas;
   }
-  .lead2{
+.lead2{
     color: green;
     font-family: consolas;
   }
 
-  .lead3{
+.lead3{
     color: green;
     font-family: consolas;
   }
 
-  .lead4{
+.lead4{
     color: green;
     font-family: consolas;
   }
   
-  .lead5{
+.lead5{
     color: green;
     font-family: consolas;
 
   }
-  .lead6{
+.lead6{
     color: green;
     font-family: consolas !important;
 
   }
 
-  .lead7{
+.lead7{
     color: green;
     font-family: consolas !important;
 
   }
 
   
-  .nav-link{
+.nav-link{
     color: white !important;
     font-family: impact;
     font-style: italic;
@@ -64,7 +61,7 @@ footer{
   img {
     width: 100%;
   }
-  
+
   .homepage {
     position: relative;
     background: url("./img/Team-large.jpg") no-repeat;
@@ -75,30 +72,30 @@ footer{
     margin-bottom: -50px;
     border-bottom: 2px solid white;
   }
-  .btn{
+.btn{
     background-color: black !important;
     border-color: green;
     border-width: 2px;
     color: white;
   }
 
-  .homepage-inner {
+.homepage-inner {
     padding-top: 80px;
   }
   
-  .display-3{
-    padding-top: 327px;
+.display-3{
+    padding-top: 242px;
     font-family: consolas;
     text-shadow: 2px 2px black;
   }
   
-  .display-4{
+.display-4{
     font-family: impact;
     text-shadow: 1px 1px green;
     font-style: italic;
   }
   
-  .navbar-brand{
+.navbar-brand{
     font-family: consolas;
     color: white !important;
     text-shadow: 2px 2px green;
@@ -107,7 +104,7 @@ footer{
   
   
   
-  .dark-overlay {
+.dark-overlay {
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
     top: 0;
@@ -116,16 +113,16 @@ footer{
     height: 100%;
   }
   
-  .card-form {
+.card-form {
     opacity: 0.9;
   }
   
-  .latest-profiles-img {
+.latest-profiles-img {
     width: 40px;
     height: 40px;
   }
   
-  .form-control::placeholder {
+.form-control::placeholder {
     color: #bbb !important;
   }
   

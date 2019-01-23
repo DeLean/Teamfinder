@@ -1,9 +1,5 @@
 const server = require("../../server");
 const request = require("supertest");
-const assert = require("chai").assert;
-var chai = require("chai");
-var expect = chai.expect;
-
 var name = "testRand";
 var email = "testRandd@mail.com";
 var password = "password";
@@ -23,7 +19,7 @@ describe("Users Route testing", function() {
 					password2: password2
 				})
 				.expect(200)
-				.end(function(err, res) {
+				.end(function(err) {
 					if (err) return done(err);
 				});
 
@@ -41,7 +37,7 @@ describe("Users Route testing", function() {
 					password2: password2
 				})
 				.expect(400)
-				.end(function(err, res) {
+				.end(function(err) {
 					if (err) return done();
 				});
 
@@ -59,7 +55,7 @@ describe("Users Route testing", function() {
 					password2: password2
 				})
 				.expect(400)
-				.end(function(err, res) {
+				.end(function(err) {
 					if (err) return done(err);
 				});
 
@@ -77,7 +73,7 @@ describe("Users Route testing", function() {
 					password2: password2
 				})
 				.expect(400)
-				.end(function(err, res) {
+				.end(function(err) {
 					if (err) return done();
 				});
 
@@ -94,7 +90,7 @@ describe("Users Route testing", function() {
 					password2: password2
 				})
 				.expect(400)
-				.end(function(err, res) {
+				.end(function(err) {
 					if (err) return done();
 				});
 
@@ -112,7 +108,7 @@ describe("Users Route testing", function() {
 					password2: password2
 				})
 				.expect(400)
-				.end(function(err, res) {
+				.end(function(err) {
 					if (err) return done();
 				});
 
@@ -130,7 +126,7 @@ describe("Users Route testing", function() {
 					password2: password2
 				})
 				.expect(400)
-				.end(function(err, res) {
+				.end(function(err) {
 					if (err) return done();
 				});
 
@@ -148,7 +144,7 @@ describe("Users Route testing", function() {
 					password2: ""
 				})
 				.expect(400)
-				.end(function(err, res) {
+				.end(function(err) {
 					if (err) return done();
 				});
 
@@ -166,7 +162,7 @@ describe("Users Route testing", function() {
 					password2: password2
 				})
 				.expect(400)
-				.end(function(err, res) {
+				.end(function(err) {
 					if (err) return done();
 				});
 
@@ -184,7 +180,7 @@ describe("Users Route testing", function() {
 					password2: password2
 				})
 				.expect(400)
-				.end(function(err, res) {
+				.end(function(err) {
 					if (err) return done();
 				});
 
@@ -202,7 +198,7 @@ describe("Users Route testing", function() {
 				.set("Content-Type", "application/json")
 				.send({ email: email, password: password })
 				.expect(200)
-				.end(function(err, res) {
+				.end(function(err) {
 					if (err) return done(err);
 				});
 

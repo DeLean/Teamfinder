@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import isEmpty from "../../validation/is_empty";
 
-class ProfileItem extends Component {
+class Item extends Component {
   render() {
     const { profile } = this.props;
 
     return (
-      <div className="card card-body bg-light mb-3">
-        <div className="row">
-          <div className="col-2">
+      <div className="card border-dark card-body bg-light mb-3">
+        <div className="row ">
+          <div className="col-2 ">
             <img src={profile.user.avatar} alt="" className="rounded-circle" />
           </div>
           <div className="col-lg-6 col-md-4 col-8">
@@ -35,7 +35,7 @@ class ProfileItem extends Component {
             <ul className="list-group">
               {profile.skills.slice(0, 4).map((skill, index) => (
                 <li key={index} className="list-group-item">
-                  <i className="fa fa-check pr-1" />
+                  <i className="fa fa-check-square pr-1" />
                   {skill}
                 </li>
               ))}
@@ -47,8 +47,8 @@ class ProfileItem extends Component {
   }
 }
 
-ProfileItem.propTypes = {
+Item.propTypes = {
   profile: PropTypes.object.isRequired
 };
 
-export default ProfileItem;
+export default Item;

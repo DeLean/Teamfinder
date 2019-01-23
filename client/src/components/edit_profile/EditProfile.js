@@ -124,18 +124,18 @@ class CreateProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Erstelle dein Profil</h1>
+              <h1 className="display-4 text-center">Editiere dein Profil</h1>
               <p className="lead5 text-center">
-              Fülle hier dein Profil aus um so attraktiv wie möglich für andere zu werden
+              Hier kannst du dein Profil editieren
               </p>
               <small className="d-block pb-3">*erforderliche Felder</small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="* Profil URL"
                   name="profileURL"
-                  value={this.state.handle}
+                  value={this.state.profileURL}
                   onChange={this.onChange}
-                  error={errors.handle}
+                  error={errors.profileURL}
                   info="Eine kurze Zeichenkette um direkt über die Adressleiste auf dein Profil zuzugreifen"
                 />
                 <SelectListGroup

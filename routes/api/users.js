@@ -102,7 +102,7 @@ router.post("/login", (req, res) => {
 });
 
 //@route  GET api/users/current
-//@desc   Return current user
+//@desc   Aktuellen Nutzer zurückgeben
 //@access Privat
 router.get("/current", passport.authenticate("jwt", { session: false }), (req, res) => {
 	//res.json(req.user);

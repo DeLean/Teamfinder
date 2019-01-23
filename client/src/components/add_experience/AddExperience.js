@@ -72,7 +72,7 @@ class AddExperience extends Component {
               </Link>
               <h1 className="display-4 text-center">Füge deine Erfahrung hinzu</h1>
               <p className="lead6 text-center">
-                Füge dein Vergangene oder aktuellen Job/Position hinzu
+                Füge deinen aktuellen oder vergangenen Job hinzu
               </p>
               <small className="d-block pb-3">*  erforderliche Felder</small>
               <form onSubmit={this.onSubmit}>
@@ -104,6 +104,7 @@ class AddExperience extends Component {
                   value={this.state.from}
                   onChange={this.onChange}
                   error={errors.from}
+                  disabled={this.state.disabled ? "disabled" : ""}
                 />
                 <h6>Bis (Datum)</h6>
                 <TextFieldGroup
