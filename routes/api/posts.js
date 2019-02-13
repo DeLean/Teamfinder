@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const passport = require("passport");
 const Post = require("../../models/Post");
 const Profile = require("../../models/Profile");
-const validatePostInput = require("../../validation/post");
+const postValidation = require("../../validation/post");
 
 // @route   GET api/posts/test
 // @desc    Post Route testen
@@ -40,7 +40,7 @@ router.get("/:id", (req, res) => {
 
 // @route   DELETE api/posts/:id
 // @desc    Post löschen
-// @access  Private
+// @access  Privat
 router.delete(
     "/:id",
     passport.authenticate("jwt", { session: false }),
@@ -70,7 +70,7 @@ router.post(
     "/",
     passport.authenticate("jwt", { session: false }),
     (req, res) => {
-        const { errors, isValid } = validatePostInput(req.body);
+        const { errors, isValid } = postValidation(req.body);
 
         //Validieren und Fehler zurückgeben
         if (!isValid) {
@@ -90,9 +90,9 @@ router.post(
 
 // @route   POST api/posts/comments/:id
 // @desc    Kommentar zum Post
-// @access  Private
+// @access  Privat
 router.post("/comments/:id", passport.authenticate("jwt", { session: false }), (req, res) => {
-    const { errors, isValid } = validatePostInput(req.body);
+    const { errors, isValid } = postValidation(req.body);
 
     if (!isValid) {
         return res.status(400).json(errors);
@@ -116,7 +116,7 @@ router.post("/comments/:id", passport.authenticate("jwt", { session: false }), (
 
 // @route   DELETE api/posts/comments/:id/:comment_id
 // @desc    Kommentar löschen
-// @access  Private
+// @access  Privat
 router.delete("/comments/:id/:comment_id", passport.authenticate("jwt", { session: false }),
     (req, res) => {
         Post.findById(req.params.id)
@@ -146,7 +146,7 @@ router.delete("/comments/:id/:comment_id", passport.authenticate("jwt", { sessio
 
 //@route   POST api/posts / like /: id
 // @desc    Post liken
-// @access  Private
+// @access  Privat
 router.post(
     "/like/:id",
     passport.authenticate("jwt", { session: false }),
@@ -175,7 +175,7 @@ router.post(
 
 // @route   POST api/posts/unlike/:id
 // @desc    Like rückgängig machen
-// @access  Private
+// @access  Privat
 router.post(
     "/unlike/:id",
     passport.authenticate("jwt", { session: false }),

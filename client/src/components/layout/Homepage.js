@@ -24,10 +24,10 @@ class Homepage extends Component {
                 </p>
                 <hr />
                 <Link to="/register" className="btn btn-lg btn-info mr-2">
-                  Sign Up
+                  Registrieren
                 </Link>
-                <Link to="/login" className="btn btn-lg btn-light">
-                  Login
+                <Link to="/login" className="btn btn-lg btn-info">
+                  Anmelden
                 </Link>
               </div>
             </div>

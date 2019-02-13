@@ -2,13 +2,12 @@ import React from "react";
 import classnames from "classnames";
 import PropTypes from "prop-types";
 
-const InputGroup = ({
+const GroupInput = ({
   name,
   placeholder,
   value,
   error,
   icon,
-  type,
   onChange
 }) => {
   return (
@@ -32,7 +31,7 @@ const InputGroup = ({
   );
 };
 
-InputGroup.propTypes = {
+GroupInput.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string.isRequired,
@@ -42,8 +41,8 @@ InputGroup.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-InputGroup.defaultProps = {
+GroupInput.defaultProps = {
   type: "text"
 };
 
-export default InputGroup;
+export default GroupInput;

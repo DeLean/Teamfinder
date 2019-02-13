@@ -64,7 +64,7 @@ footer{
 
   .homepage {
     position: relative;
-    background: url("./img/Team-large.jpg") no-repeat;
+    background: url("./bgimage/Team-large.jpg") no-repeat;
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -84,7 +84,7 @@ footer{
   }
   
 .display-3{
-    padding-top: 242px;
+    padding-top: 250px;
     font-family: consolas;
     text-shadow: 2px 2px black;
   }

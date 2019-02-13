@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import TextFieldGroup from "../static/TextFieldGroup";
-import TextAreaFieldGroup from "../static/TextAreaFieldGroup";
+import GroupTextField from "../static/GroupTextField";
+import GroupTextArea from "../static/GroupTextArea";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addExperience } from "../../actions/profiles";
 
-class AddExperience extends Component {
+class Experience extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,30 +76,33 @@ class AddExperience extends Component {
               </p>
               <small className="d-block pb-3">*  erforderliche Felder</small>
               <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
-                  placeholder="* Unternehmen"
+                <GroupTextField
+                  placeholder="Bsp.: BMW"
                   name="company"
                   value={this.state.company}
                   onChange={this.onChange}
                   error={errors.company}
+                  info="*Gib ein Unternehmen an für das du gearbeitet hast"
                 />
-                <TextFieldGroup
-                  placeholder="* Jobtitel"
+                <GroupTextField
+                  placeholder="Bsp.: Vertriebsingenieur"
                   name="title"
                   value={this.state.title}
                   onChange={this.onChange}
                   error={errors.title}
+                  info="*Wie lautete dein Jobtitel zu dieser Stelle?"
                 />
-                <TextFieldGroup
+                <GroupTextField
                   placeholder="Ort"
                   name="location"
                   value={this.state.location}
                   onChange={this.onChange}
                   error={errors.location}
+                  info="In welcher Stadt hast du gearbeitet?"
                 />
                 <h6>Von (Datum)</h6>
-                <TextFieldGroup
-                  name="frok"
+                <GroupTextField
+                  name="from"
                   type="string"
                   value={this.state.from}
                   onChange={this.onChange}
@@ -107,7 +110,7 @@ class AddExperience extends Component {
                   disabled={this.state.disabled ? "disabled" : ""}
                 />
                 <h6>Bis (Datum)</h6>
-                <TextFieldGroup
+                <GroupTextField
                   name="to"
                   type="string"
                   value={this.state.to}
@@ -129,8 +132,8 @@ class AddExperience extends Component {
                     Aktueller Job
                   </label>
                 </div>
-                <TextAreaFieldGroup
-                  placeholder="Job Beschreibung"
+                <GroupTextArea
+                  placeholder="Stellenbeschreibung"
                   name="description"
                   value={this.state.description}
                   onChange={this.onChange}
@@ -139,7 +142,7 @@ class AddExperience extends Component {
                 />
                 <input
                   type="submit"
-                  value="Senden"
+                  value="Speichern"
                   className="btn btn-info btn-block mt-4"
                 />
               </form>
@@ -151,7 +154,7 @@ class AddExperience extends Component {
   }
 }
 
-AddExperience.propTypes = {
+Experience.propTypes = {
   addExperience: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
@@ -163,5 +166,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { addExperience })(
-  withRouter(AddExperience)
+  withRouter(Experience)
 );

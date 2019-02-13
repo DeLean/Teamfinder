@@ -3,14 +3,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./token/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authentification";
-import { clearCurrentProfile } from "./actions/profiles";
-import "./App.css";
-
+import { clearProfile } from "./actions/profiles";
 import { Provider } from "react-redux";
 import store from "./store";
-
 import PrivateRoute from "./components/static/PrivateRoute";
-
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Homepage from "./components/layout/Homepage";
@@ -19,13 +15,15 @@ import Login from "./components/authentification/Login";
 import Welcome from "./components/welcome/Welcome";
 import CreateProfile from "./components/create_profile/CreateProfile";
 import EditProfile from "./components/edit_profile/EditProfile";
-import AddExperience from "./components/add_experience/AddExperience";
-import AddEducation from "./components/add_education/AddEducation";
+import Experience from "./components/add_experience/Experience";
+import Education from "./components/add_education/Education";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import Posts from "./components/posts/Posts";
 import Post from "./components/comment/Post";
 import NotFound from "./components/not_found/NotFound";
+import "./App.css";
+
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -35,7 +33,7 @@ if (localStorage.jwtToken) {
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
     store.dispatch(logoutUser());
-    store.dispatch(clearCurrentProfile());
+    store.dispatch(clearProfile());
     window.location.href = "/login";
   }
 }
@@ -74,18 +72,18 @@ class App extends Component {
                 <PrivateRoute
                   exact
                   path="/add_experience"
-                  component={AddExperience}
+                  component={Experience}
                 />
               </Switch>
               <Switch>
                 <PrivateRoute
                   exact
                   path="/add_education"
-                  component={AddEducation}
+                  component={Education}
                 />
               </Switch>
               <Switch>
-                <PrivateRoute exact path="/feed" component={Posts} />
+                <PrivateRoute exact path="/projects" component={Posts} />
               </Switch>
               <Switch>
                 <PrivateRoute exact path="/comment/:id" component={Post} />

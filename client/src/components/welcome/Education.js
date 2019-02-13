@@ -5,7 +5,7 @@ import Moment from "react-moment";
 import { deleteEducation } from "../../actions/profiles";
 
 class Education extends Component {
-  onDeleteClick(id) {
+  clickDelete(id) {
     this.props.deleteEducation(id);
   }
 
@@ -15,16 +15,16 @@ class Education extends Component {
         <td>{edu.institution}</td>
         <td>{edu.degree}</td>
         <td>
-          <Moment format="YYYY/MM/DD">{edu.from}</Moment> -
+          <Moment format="DD/MM/YYYY">{edu.from}</Moment> -
           {edu.to === null ? (
             " Now"
           ) : (
-              <Moment format="YYYY/MM/DD">{edu.to}</Moment>
+              <Moment format="DD/MM/YYYY">{edu.to}</Moment>
             )}
         </td>
         <td>
           <button
-            onClick={this.onDeleteClick.bind(this, edu._id)}
+            onClick={this.clickDelete.bind(this, edu._id)}
             className="btn btn-danger"
           >
             Löschen

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authentification";
-import TextFieldGroup from "../static/TextFieldGroup";
+import GroupTextField from "../static/GroupTextField";
 
 class Login extends Component {
   constructor() {
@@ -12,6 +12,10 @@ class Login extends Component {
       password: "",
       errors: {}
     };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+
   }
 
   componentDidMount() {
@@ -30,7 +34,7 @@ class Login extends Component {
     }
   }
 
-  onSubmit = e => {
+  onSubmit(e) {
     e.preventDefault();
 
     const userData = {
@@ -41,7 +45,7 @@ class Login extends Component {
     this.props.loginUser(userData);
   }
 
-  onChange = e => {
+  onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
@@ -58,7 +62,7 @@ class Login extends Component {
                 Melde dich hier zu deinem Teamfinder Account an
               </p>
               <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
+                <GroupTextField
                   placeholder="Email Adresse"
                   name="email"
                   type="email"
@@ -67,7 +71,7 @@ class Login extends Component {
                   error={errors.email}
                 />
 
-                <TextFieldGroup
+                <GroupTextField
                   placeholder="Passwort"
                   name="password"
                   type="password"
@@ -75,7 +79,7 @@ class Login extends Component {
                   onChange={this.onChange}
                   error={errors.password}
                 />
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <input type="submit" value="Senden" className="btn btn-info btn-block mt-4" />
               </form>
             </div>
           </div>

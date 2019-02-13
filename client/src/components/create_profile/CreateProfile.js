@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
-import TextFieldGroup from "../static/TextFieldGroup";
-import TextAreaFieldGroup from "../static/TextAreaFieldGroup";
+import GroupTextField from "../static/GroupTextField";
+import GroupTextArea from "../static/GroupTextArea";
 import SelectListGroup from "../static/SelectListGroup";
 import { createProfile } from "../../actions/profiles";
 
@@ -11,14 +11,12 @@ class CreateProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      displaySocialInputs: false,
-      handle: "",
+      profileURL: "",
       company: "",
       website: "",
       location: "",
       status: "",
       skills: "",
-      github: "",
       errors: {}
     };
 
@@ -41,8 +39,7 @@ class CreateProfile extends Component {
       website: this.state.website,
       location: this.state.location,
       status: this.state.status,
-      skills: this.state.skills,
-      github: this.state.github
+      skills: this.state.skills
      
     };
 
@@ -74,13 +71,14 @@ class CreateProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
+              
               <h1 className="display-4 text-center">Erstelle dein Profil</h1>
               <p className="lead4 text-center">
               Fülle hier dein Profil aus um so attraktiv wie möglich für andere zu werden
               </p>
               <small className="d-block pb-3">*erforderliche Felder</small>
               <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
+                <GroupTextField
                   placeholder="* Profil URL"
                   name="profileURL"
                   value={this.state.profileURL}
@@ -94,10 +92,11 @@ class CreateProfile extends Component {
                   value={this.state.status}
                   onChange={this.onChange}
                   options={options}
+                  
                   error={errors.status}
                   info="Wo befindest du dich gerade auf der Karierreleiter"
                 />
-                <TextFieldGroup
+                <GroupTextField
                   placeholder="Unternehmen"
                   name="company"
                   value={this.state.company}
@@ -105,7 +104,7 @@ class CreateProfile extends Component {
                   error={errors.company}
                   info="Dein Unternehmen oder für welches du arbeitest"
                 />
-                <TextFieldGroup
+                <GroupTextField
                   placeholder="Website"
                   name="website"
                   value={this.state.website}
@@ -113,7 +112,7 @@ class CreateProfile extends Component {
                   error={errors.website}
                   info="Deine Website oder des Unternehmens für welches du arbeitest"
                 />
-                <TextFieldGroup
+                <GroupTextField
                   placeholder="Ort"
                   name="location"
                   value={this.state.location}
@@ -121,7 +120,7 @@ class CreateProfile extends Component {
                   error={errors.location}
                   info="In Welcher Stadt?"
                 />
-                <TextFieldGroup
+                <GroupTextField
                   placeholder="* Skills"
                   name="skills"
                   value={this.state.skills}
@@ -130,15 +129,7 @@ class CreateProfile extends Component {
                   info="Füge hier deine Skills hinzu, jeweils getrennt durch ein Komma bsp.:
                     HTML,CSS,JavaScript,PHP"
                 />
-                <TextFieldGroup
-                  placeholder="Github Nutzername"
-                  name="github"
-                  value={this.state.github}
-                  onChange={this.onChange}
-                  error={errors.github}
-                  info="Für Informatiker"
-                />
-                <TextAreaFieldGroup
+                <GroupTextArea
                   placeholder="Bio"
                   name="bio"
                   value={this.state.bio}

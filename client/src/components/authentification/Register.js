@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authentification";
-import TextFieldGroup from "../static/TextFieldGroup";
+import GroupTextField from "../static/GroupTextField";
 
 class Register extends Component {
   constructor() {
@@ -15,6 +15,9 @@ class Register extends Component {
       password2: "",
       errors: {}
     };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -29,11 +32,11 @@ class Register extends Component {
     }
   }
 
-  onChange = e => {
+  onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  onSubmit = e => {
+  onSubmit(e) {
     e.preventDefault();
 
     const newUser = {
@@ -59,14 +62,14 @@ class Register extends Component {
                 Erstelle hier deinen Teamfinder Account
               </p>
               <form noValidate onSubmit={this.onSubmit}>
-                <TextFieldGroup
+                <GroupTextField
                   placeholder="Name"
                   name="name"
                   value={this.state.name}
                   onChange={this.onChange}
                   error={errors.name}
                 />
-                <TextFieldGroup
+                <GroupTextField
                   placeholder="Email"
                   name="email"
                   type="email"
@@ -75,7 +78,7 @@ class Register extends Component {
                   error={errors.email}
 
                 />
-                <TextFieldGroup
+                <GroupTextField
                   placeholder="Passwort"
                   name="password"
                   type="password"
@@ -83,7 +86,7 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.password}
                 />
-                <TextFieldGroup
+                <GroupTextField
                   placeholder="Bestätigen Sie ihr Passwort"
                   name="password2"
                   type="password"

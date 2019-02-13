@@ -4,14 +4,14 @@ import {
   GET_PROFILE,
   GET_PROFILES,
   PROFILE_LOADING,
-  CLEAR_CURRENT_PROFILE,
+  CLEAR_PROFILE,
   GET_ERRORS,
   SET_CURRENT_USER
 } from "./types";
 
 // Aktuelles Profil holen
-export const getCurrentProfile = () => dispatch => {
-  dispatch(setProfileLoading());
+export const getProfile = () => dispatch => {
+  dispatch(setLoadingProfile());
   axios
     .get("/api/profile")
     .then(res =>
@@ -30,7 +30,7 @@ export const getCurrentProfile = () => dispatch => {
 
 // Profil per URL holen
 export const getProfileByURL = url => dispatch => {
-  dispatch(setProfileLoading());
+  dispatch(setLoadingProfile());
   axios
     .get(`/api/profile/profileURL/${url}`)
     .then(res =>
@@ -124,7 +124,7 @@ export const deleteEducation = id => dispatch => {
 
 // Alle Profile anzeigen
 export const getProfiles = () => dispatch => {
-  dispatch(setProfileLoading());
+  dispatch(setLoadingProfile());
   axios
     .get("/api/profile/all")
     .then(res =>
@@ -162,14 +162,14 @@ export const deleteAccount = () => dispatch => {
 };
 
 
-export const setProfileLoading = () => {
+export const setLoadingProfile = () => {
   return {
     type: PROFILE_LOADING
   };
 };
 
-export const clearCurrentProfile = () => {
+export const clearProfile = () => {
   return {
-    type: CLEAR_CURRENT_PROFILE
+    type: CLEAR_PROFILE
   };
 };

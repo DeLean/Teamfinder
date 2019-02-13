@@ -1,7 +1,7 @@
 const isEmpty = require("./isEmpty");
 const Validator = require("validator");
 
-module.exports = function validateRegisterInput(data) {
+module.exports = function registerValidation(data) {
 	let errors = {};
 
 	data.name = !isEmpty(data.name) ? data.name : "";
@@ -9,8 +9,8 @@ module.exports = function validateRegisterInput(data) {
 	data.password = !isEmpty(data.password) ? data.password : "";
 	data.password2 = !isEmpty(data.password2) ? data.password2 : "";
 
-	if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
-		errors.password = "Passwort sollte mindestens 6 Zeichen haben";
+	if (!Validator.isLength(data.password, { min: 8, max: 30 })) {
+		errors.password = "Passwort sollte mindestens 8 Zeichen haben";
 	}
 	if (Validator.isEmpty(data.password)) {
 		errors.password = "Feld leer, geben Sie bitte das Passwort ein";

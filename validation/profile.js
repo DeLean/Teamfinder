@@ -2,7 +2,7 @@ const isEmpty = require("./isEmpty");
 const Validator = require("validator");
 
 
-module.exports = function validateProfileInput(data) {
+module.exports = function profileValidation(data) {
     let errors = {};
     //Wenn Eingabe null oder undefined leeren setzen, dann können wir mit Validator prüfen
     data.profileURL = !isEmpty(data.profileURL) ? data.profileURL : "";

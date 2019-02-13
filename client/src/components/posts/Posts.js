@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Form from "./Form";
-import Feed from "./Feed";
-import Spinner from "../static/Spinner";
+import Projects from "./Projects";
+import Loading from "../static/Loading";
 import { getPosts } from "../../actions/posts";
 
 class Posts extends Component {
@@ -16,13 +16,13 @@ class Posts extends Component {
     let postContent;
 
     if (posts === null || loading) {
-      postContent = <Spinner />;
+      postContent = <Loading />;
     } else {
-      postContent = <Feed posts={posts} />;
+      postContent = <Projects posts={posts} />;
     }
 
     return (
-      <div className="feed">
+      <div className="projects">
         <div className="container">
           <div className="row">
             <div className="col-md-12">

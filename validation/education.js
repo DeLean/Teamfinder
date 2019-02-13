@@ -2,7 +2,7 @@ const isEmpty = require("./isEmpty");
 const Validator = require("validator");
 
 
-module.exports = function validateEducationInput(data) {
+module.exports = function educationValidation(data) {
     let errors = {};
     //Wenn Eingabe null oder undefined leeren setzen, dann können wir mit Validator prüfen
     data.institution = !isEmpty(data.institution) ? data.institution : "";

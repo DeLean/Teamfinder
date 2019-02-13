@@ -7,8 +7,8 @@ var email = "Names@mail.com";
 var password = "namesPassword";
 var password2 = "namesPassword";
 
-describe("Test validateRegisterInput()", function() {
-	it("Leeren Namen angeben -> Antwort mit korrekter Fehlermeldung", function() {
+describe("Test registerValidation()", function () {
+	it("Leeren Namen angeben -> Antwort mit korrekter Fehlermeldung", function () {
 		expect(
 			app({
 				name: "",
@@ -19,7 +19,7 @@ describe("Test validateRegisterInput()", function() {
 		).to.equal("Feld leer, geben Sie bitte einen Namen ein");
 	});
 
-	it("Zu kurzer Name angeben -> Antwort mit korrekter Fehlermeldung", function() {
+	it("Zu kurzer Name angeben -> Antwort mit korrekter Fehlermeldung", function () {
 		expect(
 			app({
 				name: "s",
@@ -30,7 +30,7 @@ describe("Test validateRegisterInput()", function() {
 		).to.equal("Der Name sollte zwischen 2 - 30 Zeichen besitzen");
 	});
 
-	it("Email leer angegeben -> Antwort mit korrekter Fehlermeldung", function() {
+	it("Email leer angegeben -> Antwort mit korrekter Fehlermeldung", function () {
 		expect(
 			app({
 				name: name,
@@ -41,7 +41,7 @@ describe("Test validateRegisterInput()", function() {
 		).to.equal("Feld leer, geben Sie bitte eine Email an");
 	});
 
-	it("Keine korrekte Email angeben -> Antwort mit korrekter Fehlermeldung", function() {
+	it("Keine korrekte Email angeben -> Antwort mit korrekter Fehlermeldung", function () {
 		expect(
 			app({
 				name: name,
@@ -52,7 +52,7 @@ describe("Test validateRegisterInput()", function() {
 		).to.equal("Geben Sie bitte eine korrekte Email Adresse an");
 	});
 
-	it("Passwörter stimmen nicht überein -> Antwort mit korrekter Fehlermeldung", function() {
+	it("Passwörter stimmen nicht überein -> Antwort mit korrekter Fehlermeldung", function () {
 		expect(
 			app({
 				name: name,
@@ -63,7 +63,7 @@ describe("Test validateRegisterInput()", function() {
 		).to.equal("Passwörter stimmen nicht überein");
 	});
 
-	it("Password2 leer angegeben -> Antwort mit korrekter Fehlermeldung", function() {
+	it("Password2 leer angegeben -> Antwort mit korrekter Fehlermeldung", function () {
 		expect(
 			app({
 				name: name,
@@ -74,7 +74,7 @@ describe("Test validateRegisterInput()", function() {
 		).to.equal("Feld leer, bestätigen Sie ihr Passwort");
 	});
 
-	it("Zu kurzeres Passwort angeben -> Antwort mit korrekter Fehlermeldung", function() {
+	it("Zu kurzeres Passwort angeben -> Antwort mit korrekter Fehlermeldung", function () {
 		expect(
 			app({
 				name: name,
@@ -85,7 +85,7 @@ describe("Test validateRegisterInput()", function() {
 		).to.equal("Passwort sollte mindestens 6 Zeichen haben");
 	});
 
-	it("Leeres Passwort Feld -> Antwort mit korrekter Fehlermeldung", function() {
+	it("Leeres Passwort Feld -> Antwort mit korrekter Fehlermeldung", function () {
 		expect(
 			app({
 				name: name,

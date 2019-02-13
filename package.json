@@ -28,7 +28,6 @@
     "chai-string": "^1.5.0",
     "concurrently": "^4.1.0",
     "express": "^4.16.4",
-    "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.3.7",
     "passport": "^0.4.0",

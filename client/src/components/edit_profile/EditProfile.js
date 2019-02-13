@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
-import TextFieldGroup from "../static/TextFieldGroup";
-import TextAreaFieldGroup from "../static/TextAreaFieldGroup";
+import GroupTextField from "../static/GroupTextField";
+import GroupTextArea from "../static/GroupTextArea";
 import SelectListGroup from "../static/SelectListGroup";
-import { createProfile, getCurrentProfile } from "../../actions/profiles";
+import { createProfile, getProfile } from "../../actions/profiles";
 import isEmpty from "../../validation/is_empty";
 
 class CreateProfile extends Component {
@@ -13,13 +13,12 @@ class CreateProfile extends Component {
     super(props);
     this.state = {
       displaySocialInputs: false,
-      handle: "",
+      profileURL: "",
       company: "",
       website: "",
       location: "",
       status: "",
       skills: "",
-      github: "",
       errors: {}
     };
 
@@ -28,7 +27,7 @@ class CreateProfile extends Component {
   }
 
   componentDidMount() {
-    this.props.getCurrentProfile();
+    this.props.getProfile();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -39,32 +38,14 @@ class CreateProfile extends Component {
     if (nextProps.profile.profile) {
       const profile = nextProps.profile.profile;
 
-    
+
       const skillsCSV = profile.skills.join(",");
 
       profile.company = !isEmpty(profile.company) ? profile.company : "";
       profile.website = !isEmpty(profile.website) ? profile.website : "";
       profile.location = !isEmpty(profile.location) ? profile.location : "";
-      profile.githubusername = !isEmpty(profile.githubusername)
-        ? profile.githubusername
-        : "";
       profile.bio = !isEmpty(profile.bio) ? profile.bio : "";
-      profile.social = !isEmpty(profile.social) ? profile.social : {};
-      profile.twitter = !isEmpty(profile.social.twitter)
-        ? profile.social.twitter
-        : "";
-      profile.facebook = !isEmpty(profile.social.facebook)
-        ? profile.social.facebook
-        : "";
-      profile.linkedin = !isEmpty(profile.social.linkedin)
-        ? profile.social.linkedin
-        : "";
-      profile.youtube = !isEmpty(profile.social.youtube)
-        ? profile.social.youtube
-        : "";
-      profile.instagram = !isEmpty(profile.social.instagram)
-        ? profile.social.instagram
-        : "";
+
 
       this.setState({
         profileURL: profile.profileURL,
@@ -73,9 +54,8 @@ class CreateProfile extends Component {
         location: profile.location,
         status: profile.status,
         skills: skillsCSV,
-        github: profile.github,
         bio: profile.bio
-     
+
       });
     }
   }
@@ -90,9 +70,8 @@ class CreateProfile extends Component {
       location: this.state.location,
       status: this.state.status,
       skills: this.state.skills,
-      github: this.state.github,
       bio: this.state.bio
-   
+
     };
 
     this.props.createProfile(profileData, this.props.history);
@@ -103,8 +82,8 @@ class CreateProfile extends Component {
   }
 
   render() {
-    const { errors} = this.state;
-    
+    const { errors } = this.state;
+
 
     const options = [
       { label: "* Wähle professionellen Status aus", value: 0 },
@@ -119,18 +98,21 @@ class CreateProfile extends Component {
     ];
 
     return (
-      
+
       <div className="create-profile">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
+              <Link to="/welcome" className="btn btn-light">
+                Zurück
+              </Link>
               <h1 className="display-4 text-center">Editiere dein Profil</h1>
               <p className="lead5 text-center">
-              Hier kannst du dein Profil editieren
+                Hier kannst du dein Profil editieren
               </p>
               <small className="d-block pb-3">*erforderliche Felder</small>
               <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
+                <GroupTextField
                   placeholder="* Profil URL"
                   name="profileURL"
                   value={this.state.profileURL}
@@ -147,48 +129,39 @@ class CreateProfile extends Component {
                   error={errors.status}
                   info="Wo befindest du dich gerade auf der Karierreleiter"
                 />
-                <TextFieldGroup
-                  placeholder="Company"
+                <GroupTextField
+                  placeholder="Bsp.: Robert Bosch"
                   name="company"
                   value={this.state.company}
                   onChange={this.onChange}
                   error={errors.company}
                   info="Dein Unternehmen oder für welches du arbeitest"
                 />
-                <TextFieldGroup
-                  placeholder="Website"
+                <GroupTextField
+                  placeholder="Bsp.: www.robert-bosch.de"
                   name="website"
                   value={this.state.website}
                   onChange={this.onChange}
                   error={errors.website}
                   info="Deine Website oder des Unternehmens für welches du arbeitest"
                 />
-                <TextFieldGroup
-                  placeholder="Ort"
+                <GroupTextField
+                  placeholder="Bsp.: Stuttgart"
                   name="location"
                   value={this.state.location}
                   onChange={this.onChange}
                   error={errors.location}
                   info="In Welcher Stadt?"
                 />
-                <TextFieldGroup
-                  placeholder="* Skills"
+                <GroupTextField
+                  placeholder="Bsp.: Matlab, CAD, Python, SAP"
                   name="skills"
                   value={this.state.skills}
                   onChange={this.onChange}
                   error={errors.skills}
-                  info="Füge hier deine Skills hinzu, jeweils getrennt durch ein Komma bsp.:
-                    HTML,CSS,JavaScript,PHP"
+                  info="* Füge hier deine Skills hinzu, jeweils getrennt durch ein Komma"
                 />
-                <TextFieldGroup
-                  placeholder="Github Nutzername"
-                  name="github"
-                  value={this.state.github}
-                  onChange={this.onChange}
-                  error={errors.github}
-                  info="Für Informatiker"
-                />
-                <TextAreaFieldGroup
+                <GroupTextArea
                   placeholder="Bio"
                   name="bio"
                   value={this.state.bio}
@@ -197,10 +170,10 @@ class CreateProfile extends Component {
                   info="Erzähl etwas über dich"
                 />
 
-                
+
                 <input
                   type="submit"
-                  value="Senden"
+                  value="Speichern"
                   className="btn btn-info btn-block mt-4"
                 />
               </form>
@@ -214,7 +187,7 @@ class CreateProfile extends Component {
 
 CreateProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
-  getCurrentProfile: PropTypes.func.isRequired,
+  getProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -224,6 +197,6 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+export default connect(mapStateToProps, { createProfile, getProfile })(
   withRouter(CreateProfile)
 );

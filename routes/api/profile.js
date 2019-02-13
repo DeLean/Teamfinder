@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const passport = require("passport");
-const validateProfileInput = require("../../validation/profile");
-const validateExperienceInput = require("../../validation/experience");
-const validateEducationInput = require("../../validation/education");
+const profileValidation = require("../../validation/profile");
+const experienceValidation = require("../../validation/experience");
+const educationValidation = require("../../validation/education");
 
 const Profile = require("../../models/Profile");
 const User = require("../../models/User");
@@ -85,7 +85,7 @@ router.get("/user/:user_id", (req, res) => {
 //@access Privat
 
 router.post("/", passport.authenticate("jwt", { session: false }), (req, res) => {
-	const { errors, isValid } = validateProfileInput(req.body);
+	const { errors, isValid } = profileValidation(req.body);
 	if (!isValid) {
 		return res.status(400).json(errors);
 	}
@@ -103,8 +103,6 @@ router.post("/", passport.authenticate("jwt", { session: false }), (req, res) =>
 		profileFields.bio = req.body.bio;
 	if (req.body.status)
 		profileFields.status = req.body.status;
-	if (req.body.github)
-		profileFields.github = req.body.github;
 	if (typeof req.body.skills !== "undefined")
 		profileFields.skills = req.body.skills.split(",");
 
@@ -119,7 +117,7 @@ router.post("/", passport.authenticate("jwt", { session: false }), (req, res) =>
 				)
 					.then(profile => res.json(profile));
 			} else {
-				//Nutzer hat kein Profil dann URL(handle prüfen)
+				//Nutzer hat kein Profil dann URL prüfen
 				Profile.findOne({ profileURL: profileFields.profileURL }).then(profile => {
 					if (profile) {
 						errors.profileURL = "Profil URL existiert schon";
@@ -138,7 +136,7 @@ router.post(
 	"/experience",
 	passport.authenticate("jwt", { session: false }),
 	(req, res) => {
-		const { errors, isValid } = validateExperienceInput(req.body);
+		const { errors, isValid } = experienceValidation(req.body);
 
 		if (!isValid) {
 			return res.status(400).json(errors);
@@ -195,7 +193,7 @@ router.post(
 	"/education",
 	passport.authenticate("jwt", { session: false }),
 	(req, res) => {
-		const { errors, isValid } = validateEducationInput(req.body);
+		const { errors, isValid } = educationValidation(req.body);
 		if (!isValid) {
 
 			return res.status(400).json(errors);
@@ -223,6 +221,30 @@ router.post(
 
 
 
+	}
+);
+
+// @route   DELETE api/profile/education/:edu_id
+// @desc    Bildung löschen
+// @access  Privat
+router.delete(
+	"/education/:edu_id",
+	passport.authenticate("jwt", { session: false }),
+	(req, res) => {
+		Profile.findOne({ user: req.user.id })
+			.then(profile => {
+				// Get remove index
+				const removeIndex = profile.education
+					.map(item => item.id)
+					.indexOf(req.params.edu_id);
+
+				// Splice out of array
+				profile.education.splice(removeIndex, 1);
+
+				// Save
+				profile.save().then(profile => res.json(profile));
+			})
+			.catch(err => res.status(404).json(err));
 	}
 );
 // @route   DELETE api/profile

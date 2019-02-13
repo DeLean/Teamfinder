@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Item from "./Item";
 
-class Feed extends Component {
+class Projects extends Component {
   render() {
     const { posts } = this.props;
 
@@ -10,8 +10,8 @@ class Feed extends Component {
   }
 }
 
-Feed.propTypes = {
+Projects.propTypes = {
   posts: PropTypes.array.isRequired
 };
 
-export default Feed;
+export default Projects;

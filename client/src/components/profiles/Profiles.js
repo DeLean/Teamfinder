@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Spinner from "../static/Spinner";
+import Loading from "../static/Loading";
 import Item from "./Item";
 import { getProfiles } from "../../actions/profiles";
 
@@ -15,7 +15,7 @@ class Profiles extends Component {
     let profileItems;
 
     if (profiles === null || loading) {
-      profileItems = <Spinner />;
+      profileItems = <Loading />;
     } else {
       if (profiles.length > 0) {
         profileItems = profiles.map(profile => (

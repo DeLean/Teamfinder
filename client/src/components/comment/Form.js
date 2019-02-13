@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import TextAreaFieldGroup from "../static/TextAreaFieldGroup";
+import GroupTextArea from "../static/GroupTextArea";
 import { addComment } from "../../actions/posts";
 
 class Form extends Component {
@@ -54,7 +54,7 @@ class Form extends Component {
           <div className="card-body">
             <form onSubmit={this.onSubmit}>
               <div className="form-group">
-                <TextAreaFieldGroup
+                <GroupTextArea
                   placeholder="Antworte auf den Post"
                   name="text"
                   value={this.state.text}

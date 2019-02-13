@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 import About from "./About";
 import Creds from "./Creds";
-import Github from "./Github";
-import Spinner from "../static/Spinner";
+import Loading from "../static/Loading";
 import { getProfileByURL } from "../../actions/profiles";
 
 class Profile extends Component {
@@ -27,7 +26,7 @@ class Profile extends Component {
     let profileContent;
 
     if (profile === null || loading) {
-      profileContent = <Spinner />;
+      profileContent = <Loading />;
     } else {
       profileContent = (
         <div>
@@ -45,9 +44,6 @@ class Profile extends Component {
             education={profile.education}
             experience={profile.experience}
           />
-          {profile.githubusername ? (
-            <Github username={profile.githubusername} />
-          ) : null}
         </div>
       );
     }

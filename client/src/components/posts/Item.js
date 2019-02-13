@@ -6,19 +6,19 @@ import { Link } from "react-router-dom";
 import { deletePost, addLike, removeLike } from "../../actions/posts";
 
 class Item extends Component {
-  onDeleteClick(id) {
+  clickDelete(id) {
     this.props.deletePost(id);
   }
 
-  onLikeClick(id) {
+  clickLike(id) {
     this.props.addLike(id);
   }
 
-  onUnlikeClick(id) {
+  clickUnlike(id) {
     this.props.removeLike(id);
   }
 
-  findUserLike(likes) {
+  userLike(likes) {
     const { auth } = this.props;
     if (likes.filter(like => like.user === auth.user.id).length > 0) {
       return true;
@@ -49,19 +49,19 @@ class Item extends Component {
             {showActions ? (
               <span>
                 <button
-                  onClick={this.onLikeClick.bind(this, post._id)}
+                  onClick={this.clickLike.bind(this, post._id)}
                   type="button"
                   className="btn btn-light mr-1"
                 >
                   <i
                     className={classnames("fas fa-thumbs-up", {
-                      "text-success": this.findUserLike(post.likes)
+                      "text-success": this.userLike(post.likes)
                     })}
                   />
                   <span className="badge badge-light">{post.likes.length}</span>
                 </button>
                 <button
-                  onClick={this.onUnlikeClick.bind(this, post._id)}
+                  onClick={this.clickUnlike.bind(this, post._id)}
                   type="button"
                   className="btn btn-light mr-1"
                 >
@@ -72,7 +72,7 @@ class Item extends Component {
                 </Link>
                 {post.user === auth.user.id ? (
                   <button
-                    onClick={this.onDeleteClick.bind(this, post._id)}
+                    onClick={this.clickDelete.bind(this, post._id)}
                     type="button"
                     className="btn btn-danger mr-1"
                   >

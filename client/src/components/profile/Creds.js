@@ -17,19 +17,19 @@ class Creds extends Component {
             )}
         </p>
         <p>
-          <strong>Position:</strong> {exp.title}
+          <strong>Postition:</strong> {exp.title}
         </p>
         <p>
           {exp.location === "" ? null : (
             <span>
-              <strong>Location: </strong> {exp.location}
+              <strong>Ort: </strong> {exp.location}
             </span>
           )}
         </p>
         <p>
           {exp.description === "" ? null : (
             <span>
-              <strong>Description: </strong> {exp.description}
+              <strong>Beschreibung: </strong> {exp.description}
             </span>
           )}
         </p>

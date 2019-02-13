@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Item from "../posts/Item";
 import Form from "./Form";
-import Feed from "./Feed";
-import Spinner from "../static/Spinner";
+import Projects from "./Projects";
+import Loading from "../static/Loading";
 import { getPost } from "../../actions/posts";
 
 class Post extends Component {
@@ -18,13 +18,13 @@ class Post extends Component {
     let postContent;
 
     if (post === null || loading || Object.keys(post).length === 0) {
-      postContent = <Spinner />;
+      postContent = <Loading />;
     } else {
       postContent = (
         <div>
           <Item post={post} showActions={false} />
           <Form postId={post._id} />
-          <Feed postId={post._id} comments={post.comments} />
+          <Projects postId={post._id} comments={post.comments} />
         </div>
       );
     }
@@ -34,8 +34,8 @@ class Post extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <Link to="/feed" className="btn btn-light mb-3">
-                Zurück zum Feed
+              <Link to="/projects" className="btn btn-light mb-3">
+                Zurück zu den Projekten
               </Link>
               {postContent}
             </div>

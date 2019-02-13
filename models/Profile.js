@@ -36,9 +36,6 @@ const ProfileSchema = new Schema({
 	bio: {
 		type: String
 	},
-	github: {
-		type: String
-	},
 	experience: [
 		{
 			company: {

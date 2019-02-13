@@ -4,8 +4,8 @@ const expect = chai.expect;
 
 var urlRight = "http://testme.url/";
 
-describe("Test validateProfileInput()", function() {
-	it("Zu kurze ProfileURL angeben -> Antwort mit korrekter Fehlermeldung", function() {
+describe("Test profileValidation()", function () {
+	it("Zu kurze ProfileURL angeben -> Antwort mit korrekter Fehlermeldung", function () {
 		expect(
 			app({
 				status: "testStatus",
@@ -16,7 +16,7 @@ describe("Test validateProfileInput()", function() {
 		).to.equal("Profil URL muss zwischen 2 und 4 Zeichen lang sein");
 	});
 
-	it("Leere ProfileURL angeben -> Antwort mit korrekter Fehlermeldung", function() {
+	it("Leere ProfileURL angeben -> Antwort mit korrekter Fehlermeldung", function () {
 		expect(
 			app({
 				status: "testStatus",
@@ -27,7 +27,7 @@ describe("Test validateProfileInput()", function() {
 		).to.equal("Feld ist leer, bitte URL eingeben");
 	});
 
-	it("Leeres Skills-Feld angeben -> Antwort mit korrekter Fehlermeldung", function() {
+	it("Leeres Skills-Feld angeben -> Antwort mit korrekter Fehlermeldung", function () {
 		expect(
 			app({
 				status: "testStatus",
@@ -38,7 +38,7 @@ describe("Test validateProfileInput()", function() {
 		).to.equal("Feld leer, bitte Skills eingeben");
 	});
 
-	it("Leeres Status-Feld angeben -> Antwort mit korrekter Fehlermeldung", function() {
+	it("Leeres Status-Feld angeben -> Antwort mit korrekter Fehlermeldung", function () {
 		expect(
 			app({
 				status: "",
@@ -49,7 +49,7 @@ describe("Test validateProfileInput()", function() {
 		).to.equal("Feld leer, bitte Status eingeben");
 	});
 
-	it("Keine gültige URL für die Website angeben -> Antwort mit korrekter Fehlermeldung", function() {
+	it("Keine gültige URL für die Website angeben -> Antwort mit korrekter Fehlermeldung", function () {
 		expect(
 			app({
 				status: "testStatus",

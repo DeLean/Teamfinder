@@ -2,18 +2,18 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { getCurrentProfile, deleteAccount } from "../../actions/profiles";
-import Spinner from "../static/Spinner";
+import { getProfile, deleteAccount } from "../../actions/profiles";
+import Loading from "../static/Loading";
 import ProfileActions from "./Actions";
 import Experience from "./Experience";
 import Education from "./Education";
 
 class Welcome extends Component {
   componentDidMount() {
-    this.props.getCurrentProfile();
+    this.props.getProfile();
   }
 
-  onDeleteClick(e) {
+  clickDelete(e) {
     this.props.deleteAccount();
   }
 
@@ -21,24 +21,24 @@ class Welcome extends Component {
     const { user } = this.props.auth;
     const { profile, loading } = this.props.profile;
 
-    let dashboardContent;
+    let welcomeContent;
 
     if (profile === null || loading) {
-      dashboardContent = <Spinner />;
+      welcomeContent = <Loading />;
     } else {
       // Überprüfunen ob der Nutzer Profilinfos hat
       if (Object.keys(profile).length > 0) {
-        dashboardContent = (
+        welcomeContent = (
           <div>
             <p className="lead text-muted">
-              Hey <Link to={`/profile/${profile.handle}`}>{user.name}</Link>
+              Hey <Link to={`/profile/${profile.profileURL}`}>{user.name}</Link>
             </p>
             <ProfileActions />
             <Experience experience={profile.experience} />
             <Education education={profile.education} />
             <div style={{ marginBottom: "60px" }} />
             <button
-              onClick={this.onDeleteClick.bind(this)}
+              onClick={this.clickDelete.bind(this)}
               className="btn btn-danger"
             >
               Lösche Account
@@ -47,7 +47,7 @@ class Welcome extends Component {
         );
       } else {
         // Nutzer ist eingeloggt besitzt aber kein Profil
-        dashboardContent = (
+        welcomeContent = (
           <div>
             <p className="lead text-muted">Hey {user.name}</p>
             <p>Dein Profil ist noch leer, fülle es doch aus</p>
@@ -65,7 +65,7 @@ class Welcome extends Component {
           <div className="row">
             <div className="col-md-12">
               <h1 className="display-4">Willkommen</h1>
-              {dashboardContent}
+              {welcomeContent}
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@ class Welcome extends Component {
 }
 
 Welcome.propTypes = {
-  getCurrentProfile: PropTypes.func.isRequired,
+  getProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
@@ -86,6 +86,6 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
+export default connect(mapStateToProps, { getProfile, deleteAccount })(
   Welcome
 );

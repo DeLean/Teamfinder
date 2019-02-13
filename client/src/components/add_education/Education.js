@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import TextFieldGroup from "../static/TextFieldGroup";
-import TextAreaFieldGroup from "../static/TextAreaFieldGroup";
+import GroupTextField from "../static/GroupTextField";
+import GroupTextArea from "../static/GroupTextArea";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addEducation } from "../../actions/profiles";
 
-class AddEducation extends Component {
+class Education extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,45 +76,51 @@ class AddEducation extends Component {
               </p>
               <small className="d-block pb-3">*erforderliche Felder</small>
               <form onSubmit={this.onSubmit}>
-                <TextFieldGroup
-                  placeholder="* Bildungseinrichtung"
+                <GroupTextField
+                  placeholder="Bsp.: Universität Hamburg"
                   name="institution"
                   value={this.state.institution}
                   onChange={this.onChange}
                   error={errors.institution}
+                  info="*In welcher Instiution hast du deine Bildung erlangt?"
                 />
-                <TextFieldGroup
-                  placeholder="* Abschluss oder Zertifikat"
+                <GroupTextField
+                  placeholder="Bsp.: Bachelor of Science"
                   name="degree"
                   value={this.state.degree}
                   onChange={this.onChange}
                   error={errors.degree}
+                  info="*Was für einen Abschluss hast du in dieser Einrichtung erlangt?"
                 />
-                <TextFieldGroup
-                  placeholder="* Fachbereich"
+                <GroupTextField
+                  placeholder="Physik"
                   name="fieldofstudy"
                   value={this.state.fieldofstudy}
                   onChange={this.onChange}
                   error={errors.fieldofstudy}
+                  info="*Aus welchem Fachbereich hast du deinen Abschluss?"
                 />
-                <h6>Von</h6>
-                <TextFieldGroup
+                <h6>Von (Datum)</h6>
+                <GroupTextField
                   name="from"
                   type="string"
                   value={this.state.from}
                   onChange={this.onChange}
                   error={errors.from}
                   disabled={this.state.disabled ? "disabled" : ""}
+                  placeholder=" Bsp.: 01.01.2019"
 
                 />
-                <h6>Bis</h6>
-                <TextFieldGroup
+                <h6>Bis (Datum)</h6>
+                <GroupTextField
                   name="to"
                   type="string"
                   value={this.state.to}
                   onChange={this.onChange}
                   error={errors.to}
                   disabled={this.state.disabled ? "disabled" : ""}
+                  placeholder=" Bsp.: 01.01.2019"
+
                 />
                 <div className="form-check mb-4">
                   <input
@@ -130,7 +136,7 @@ class AddEducation extends Component {
                     Aktuelle Einrichtung
                   </label>
                 </div>
-                <TextAreaFieldGroup
+                <GroupTextArea
                   placeholder="Beschreibung"
                   name="description"
                   value={this.state.description}
@@ -152,7 +158,7 @@ class AddEducation extends Component {
   }
 }
 
-AddEducation.propTypes = {
+Education.propTypes = {
   addEducation: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
@@ -164,5 +170,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { addEducation })(
-  withRouter(AddEducation)
+  withRouter(Education)
 );

@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { deleteComment } from "../../actions/posts";
 
 class Item extends Component {
-  onDeleteClick(postId, commentId) {
+  clickDelete(postId, commentId) {
     this.props.deleteComment(postId, commentId);
   }
 
@@ -29,7 +29,7 @@ class Item extends Component {
             <p className="lead">{comment.text}</p>
             {comment.user === auth.user.id ? (
               <button
-                onClick={this.onDeleteClick.bind(this, postId, comment._id)}
+                onClick={this.clickDelete.bind(this, postId, comment._id)}
                 type="button"
                 className="btn btn-danger mr-1"
               >
