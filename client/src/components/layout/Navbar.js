@@ -8,7 +8,7 @@ import { clearProfile } from "../../actions/profiles";
 class Navbar extends Component {
   clickLogout(e) {
     e.preventDefault();
-    this.props.clearCurrentProfile();
+    this.props.clearProfile();
     this.props.logoutUser();
   }
 
